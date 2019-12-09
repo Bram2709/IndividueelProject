@@ -1,0 +1,182 @@
+﻿@{
+    ViewData["Title"] = "Medewerker info page";
+
+}
+
+<div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'reserveringGegevens')">Gegevens</button>
+    <button class="tablinks" onclick="openCity(event, 'reserveringsGegevensCompact')">Gegevens2</button>
+    <select name="Restaurants">
+        <option value="Bomenpark">Bomenpark</option>
+        <option value="bistroLouis"><B></B>Bistro Louis</option>
+        <option value="Bar15">Bar15</option>
+    </select>
+</div>
+
+
+
+
+<script>
+
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+<div id="reserveringGegevens" class="tabcontent">
+    <table>
+
+        <thead>
+            <tr class="table100-head">
+                <th class="column1">ID</th>
+                <th class="column2">Naam</th>
+                <th class="column3">TelefoonNr</th>
+                <th class="column4">Datum</th>
+                <th class="column5">AantalPersonen</th>
+                <th class="column6">Opmerking</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td class="column1">1</td>
+                <td class="column2">Bram van de Wetering</td>
+                <td class="column3">0629394959</td>
+                <td class="column4">9/10/2019</td>
+                <td class="column5">4</td>
+                <td class="column6">dit is een test</td>
+            </tr>
+            <tr>
+                <td class="column1">1</td>
+                <td class="column2">Bram van de Wetering</td>
+                <td class="column3">0629394959</td>
+                <td class="column4">9/10/2019</td>
+                <td class="column5">4</td>
+                <td class="column6">dit is een test</td>
+            </tr>
+            <tr>
+                <td class="column1">1</td>
+                <td class="column2">Bram van de Wetering</td>
+                <td class="column3">0629394959</td>
+                <td class="column4">9/10/2019</td>
+                <td class="column5">4</td>
+                <td class="column6">dit is een test</td>
+            </tr>
+            <tr>
+                <td class="column1">1</td>
+                <td class="column2">Bram van de Wetering</td>
+                <td class="column3">0629394959</td>
+                <td class="column4">9/10/2019</td>
+                <td class="column5">4</td>
+                <td class="column6">dit is een test</td>
+            </tr>
+            <tr>
+                <td class="column1">1</td>
+                <td class="column2">Bram van de Wetering</td>
+                <td class="column3">0629394959</td>
+                <td class="column4">9/10/2019</td>
+                <td class="column5">4</td>
+                <td class="column6">dit is een test</td>
+            </tr>
+            <tr>
+                <td class="column1">1</td>
+                <td class="column2">Bram van de Wetering</td>
+                <td class="column3">0629394959</td>
+                <td class="column4">9/10/2019</td>
+                <td class="column5">4</td>
+                <td class="column6">dit is een test</td>
+
+            </tr>
+            <tr>
+                <td class="column1">1</td>
+                <td class="column2">Bram van de Wetering</td>
+                <td class="column3">0629394959</td>
+                <td class="column4">9/10/2019</td>
+                <td class="column5">4</td>
+                <td class="column6">dit is een test</td>
+            </tr>
+            <tr>
+                <td class="column1">1</td>
+                <td class="column2">Bram van de Wetering</td>
+                <td class="column3">0629394959</td>
+                <td class="column4">9/10/2019</td>
+                <td class="column5">4</td>
+                <td class="column6">dit is een test</td>
+            </tr>
+            <tr>
+                <td class="column1">1</td>
+                <td class="column2">Bram van de Wetering</td>
+                <td class="column3">0629394959</td>
+                <td class="column4">9/10/2019</td>
+                <td class="column5">4</td>
+                <td class="column6">dit is een test</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div id="reserveringsGegevensCompact" class="tabcontent">
+    <form typeof="post">
+        <p>
+            Aantal personen: <input type="number" />
+            <input type="submit" value="Bevestig" />
+        </p>
+    </form>
+
+    <table>
+        <thead>
+            <tr class="table100-head">
+                <th class="column1">Tafel voor zoveel persoenen</th>
+                <th class="column2">Hoeveelheid tafels</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="column1">1</td>
+                <td class="column2">2</td>
+            </tr>
+            <tr>
+                <td class="column1">2</td>
+                <td class="column2">6</td>
+            </tr>
+            <tr>
+                <td class="column1">3</td>
+                <td class="column2">2</td>
+            </tr>
+            <tr>
+                <td class="column1">4</td>
+                <td class="column2">7</td>
+            </tr>
+            <tr>
+                <td class="column1">5</td>
+                <td class="column2">3</td>
+            </tr>
+            <tr>
+                <td class="column1">6</td>
+                <td class="column2">2</td>
+            </tr>
+            <tr>
+                <td class="column1">10</td>
+                <td class="column2">1</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
