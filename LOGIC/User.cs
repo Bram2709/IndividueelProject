@@ -6,21 +6,27 @@ namespace LOGIC
 {
     public class User
     {
-        private int id = 0;
-        private string name = "";
-        private string telNr = "";
-        private string username = "";
-        private string password = "";
-        private int lvl = 0;
+        private int userID;
+        private string name;
+        private string telNr;
+        private string username;
+        private string password;
+        private int lvl;
 
-        public User(int _id, string _name, string _telNr, string _username, string _password, int _lvl)
+        public User()
         {
-            _id = id;
+
+        }
+
+        public User(int _userID, string _name, string _telNr, string _username, string _password, int _lvl)
+        {
+            _userID = userID;
             _name = name;
             _telNr = telNr;
             _username = username;
             _password = password;
             _lvl = lvl;
         }
+
     }
 }

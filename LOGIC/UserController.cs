@@ -21,11 +21,9 @@ namespace LOGIC
             return (user);
         }
 
-        public void AddUser(UserModel userModel)
-        {
-            User user = GetUserByName(userModel.name);
-
-
-        }
+        //public void AddUser(UserModel userModel)
+        //{
+        //    User user = GetUserByName(userModel.name);
+        //}
     }
 }

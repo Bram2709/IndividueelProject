@@ -6,7 +6,7 @@ namespace MODEL
 {
     public interface IUserContainerDAL
     {
-        UserModel GetAll();
+        List<UserModel> GetAll();
         UserModel GetUserByName(string username);
         
     }

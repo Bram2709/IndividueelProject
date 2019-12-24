@@ -15,27 +15,36 @@ namespace DAL
 
         MySqlConnection DbCon;
 
-        public UserModel GetAll()
+        public List<UserModel> GetAll()
         {
-            UserModel userModel = new UserModel();
+            List<UserModel> userModels = new List<UserModel>();
 
             DbCon = new MySqlConnection(connString);
             DbCon.Open();
-
-            string query = "SELECT * FROM reservering";
+             
+            string query = "SELECT * FROM users";
 
             MySqlCommand command = new MySqlCommand(query, DbCon);
             MySqlDataReader dataReader = command.ExecuteReader();
 
             while (dataReader.Read())
             {
-                userModel.username = dataReader["ReserveringID"].ToString();
-                userModel.password = dataReader["Naam"].ToString();
+                UserModel userModel = new UserModel();
+
+                userModel.userID = Convert.ToInt32(dataReader["ID"]);
+                userModel.name = dataReader["Name"].ToString();
+                userModel.telNr = dataReader["TelNr"].ToString();
+                userModel.username = dataReader["Username"].ToString();
+                userModel.password = dataReader["Password"].ToString();
+                userModel.lvl = Convert.ToInt32(dataReader["Lvl"]);
+
+
+                userModels.Add(userModel);
             }
 
             DbCon.Close();
 
-            return userModel;
+            return userModels;
         }
 
         public UserModel GetUserByName(string username)

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model MODEL.Reservation.ReservationModel
+@{
     ViewData["Title"] = "Reserveren";
 }
 <div class="reserverenPage">
@@ -6,13 +7,13 @@
         <div class="row">
             <div class="formReserveren">
                 <h1 class="formH1Text">Reserveren</h1>
-                <form method="post" class="formClassStyle">
+                <form asp-action="Reserveren" asp-controller="Home">
                     <div class="row formInput">
                         <div class="col-sm-4">
                             Naam:
                         </div>
                         <div class="col-sm-4">
-                            <input type="text"/>
+                            <input asp-for="Name" placeholder="Your name goes here" />
                         </div>
                     </div>
                     <div class="row  formInput">
@@ -21,7 +22,7 @@
                         </div>
 
                         <div class="col-sm-4">
-                            <input type="date"/>
+                            <input type="date" asp-for="date" />
                         </div>
                     </div>
                     <div class="row  formInput">
@@ -30,7 +31,7 @@
                         </div>
 
                         <div class="col-sm-4">
-                            <input type="text" />
+                            <input asp-for="telNr" placeholder="Your phone number goes here" />
                         </div>
 
                     </div>
@@ -40,22 +41,24 @@
                         </div>
 
                         <div class="col-sm-1">
-                            <input type="number" style="width:50px" />
+                            <input type="number" asp-for="amountOfPeaple" />
                         </div>
-                       
+
                     </div>
                     <div class="row  formInput">
                         <div class="col-sm-4">Opmerkingen:</div>
 
-                        <div class="col-sm-4"><input type="text" style="height:100px" /></div>
-
-
-                    </div>  
-                    <div class="row  formInput" >
-                        <div class="col-lg-1">
-                            <input type="submit" value="Bevestig"/>
+                        <div class="col-sm-4">
+                            <input type="text" asp-for="note"/>
                         </div>
-                        
+
+
+                    </div>
+                    <div class="row  formInput">
+                        <div class="col-lg-1">
+                            <input type="submit" value="Reserveer" />
+                        </div>
+
                     </div>
 
 

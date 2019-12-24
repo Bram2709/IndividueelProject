@@ -7,6 +7,8 @@ using ReserveringsApp.Models;
 using MODEL;
 using DAL;
 
+using MODEL.Reservation;
+
 namespace ReserveringsApp.Controllers
 {
     public class HomeController : Controller
@@ -15,15 +17,11 @@ namespace ReserveringsApp.Controllers
         {
             //ReserveringContext context = HttpContext.RequestServices.GetService(typeof(ReserveringsApp.Models.ReserveringContext)) as ReserveringContext;
             UserDAL userDal = new UserDAL();
-            UserModel user = userDal.GetAll();
+            List<UserModel> user = userDal.GetAll();
             ViewBag.user = user;
             return View();
         }
 
-        public IActionResult Reserveren()
-        {
-            return View();
-        }
 
         public IActionResult Inloggen()
         {
@@ -54,29 +52,19 @@ namespace ReserveringsApp.Controllers
             return View();
         }
 
-        //public IActionResult About()
-        //{
-        //    ViewData["Message"] = "Your application description page.";
+        public IActionResult Reserveren()
+        {
+            return View();
+        }
 
-        //    return View();
-        //}
+        [HttpPost]
+        public IActionResult Reserveren(ReservationModel reserveringModel)
+        {
+            ReservationDAL reservering = new ReservationDAL();
+            reservering.AddReservation(reserveringModel);
 
-        //public IActionResult Contact()
-        //{
-        //    ViewData["Message"] = "Your contact page.";
+            return View();
 
-        //    return View();
-        //}
-
-        //public IActionResult Privacy()
-        //{
-        //    return View();
-        //}
-
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //public IActionResult Error()
-        //{
-        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        //}
+        }
     }
 }
