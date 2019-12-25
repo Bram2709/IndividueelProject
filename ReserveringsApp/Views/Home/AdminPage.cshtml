@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MODEL.Reservation.ReservationModel>
+
+@{
+    ViewData["Title"] = "AdminPage";
+}
+
+<h2>AdminPage</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservationID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telNr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.amountOfPeaple)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.note)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReservationID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telNr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.amountOfPeaple)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.note)
+            </td>
+           
+        </tr>
+}
+    </tbody>
+</table>

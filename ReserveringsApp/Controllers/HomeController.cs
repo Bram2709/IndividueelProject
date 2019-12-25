@@ -13,15 +13,23 @@ namespace ReserveringsApp.Controllers
 {
     public class HomeController : Controller
     {
+        UserDAL userDAL = new UserDAL();
+        ReservationDAL reservering = new ReservationDAL();
+
         public IActionResult Index()
         {
             //ReserveringContext context = HttpContext.RequestServices.GetService(typeof(ReserveringsApp.Models.ReserveringContext)) as ReserveringContext;
-            UserDAL userDal = new UserDAL();
-            List<UserModel> user = userDal.GetAll();
+           
+            List<UserModel> user = userDAL.GetAll();
             ViewBag.user = user;
             return View();
         }
 
+        public IActionResult AdminPage()
+        {
+            var reserveringen = reservering.GetAll();
+            return View(reserveringen);
+        }
 
         public IActionResult Inloggen()
         {
@@ -39,7 +47,7 @@ namespace ReserveringsApp.Controllers
         [HttpPost]
         public RedirectToActionResult Registreren(UserModel uniqueUser)
         {
-            UserDAL userDAL = new UserDAL();
+            
 
             userDAL.AddUser(uniqueUser);
 
@@ -60,11 +68,13 @@ namespace ReserveringsApp.Controllers
         [HttpPost]
         public IActionResult Reserveren(ReservationModel reserveringModel)
         {
-            ReservationDAL reservering = new ReservationDAL();
+            
             reservering.AddReservation(reserveringModel);
 
             return View();
 
         }
+
+        
     }
 }

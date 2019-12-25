@@ -23,7 +23,7 @@ namespace DAL
             DbCon = new MySqlConnection(connString);
             DbCon.Open();
 
-            string query = "SELECT * FROM users";
+            string query = "SELECT * FROM reservering";
 
             MySqlCommand command = new MySqlCommand(query, DbCon);
             MySqlDataReader dataReader = command.ExecuteReader();
@@ -33,7 +33,7 @@ namespace DAL
                 ReservationModel reservationModel = new ReservationModel();
 
                 reservationModel.ReservationID = Convert.ToInt32(dataReader["ReserveringID"]);
-                reservationModel.Name = dataReader["Name"].ToString();
+                reservationModel.Name = dataReader["Naam"].ToString();
                 reservationModel.date = (DateTime)dataReader["Datum"];
                 reservationModel.telNr = dataReader["TelNr"].ToString();
                 reservationModel.amountOfPeaple = Convert.ToInt32(dataReader["AantalPersonen"]);
