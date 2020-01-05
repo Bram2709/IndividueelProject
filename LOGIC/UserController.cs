@@ -6,19 +6,19 @@ using DAL;
 
 namespace LOGIC
 {
-    class UserController
+    public class UserController
     {
         UserDAL userdal = new UserDAL();
 
 
-        public User GetUserByName(string name)
+        public UserModel GetUserByName(string name)
         {
-            
+
             UserModel userModel = userdal.GetUserByName(name);
 
-            User user = new User(userModel.userID,userModel.name, userModel.telNr,userModel.username,userModel.password,userModel.lvl);
 
-            return (user);
+
+            return (userModel);
         }
 
         //public void AddUser(UserModel userModel)

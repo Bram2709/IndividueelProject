@@ -12,5 +12,6 @@ namespace MODEL.Reservation
         public string telNr { get; set; }
         public int amountOfPeaple { get; set; }
         public string note { get; set; }
+        public string restaurant { get; set; }
     }
 }

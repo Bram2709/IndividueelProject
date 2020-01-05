@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using ReserveringsApp.Models;
 using MODEL;
 using DAL;
+using MODEL.Restaurant;
+using LOGIC;
 
 using MODEL.Reservation;
 
@@ -14,7 +16,10 @@ namespace ReserveringsApp.Controllers
     public class HomeController : Controller
     {
         UserDAL userDAL = new UserDAL();
-        ReservationDAL reservering = new ReservationDAL();
+        ReservationDAL reservationDAL = new ReservationDAL();
+
+        ReservationController reservationController = new ReservationController();
+        RestaurantController restaurantController = new RestaurantController();
 
         public IActionResult Index()
         {
@@ -27,8 +32,18 @@ namespace ReserveringsApp.Controllers
 
         public IActionResult AdminPage()
         {
-            var reserveringen = reservering.GetAll();
-            return View(reserveringen);
+            var reserveringen = reservationController.GetAll();
+            var restaurant = restaurantController.GetAll();
+
+            var model = new RestaurantAndReserveringModel { Restaurants = restaurant.ToList(), Reserveringen = reserveringen.ToList() };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult AdminPage(string restaurant)
+        {
+            return View();
         }
 
         public IActionResult Inloggen()
@@ -62,14 +77,25 @@ namespace ReserveringsApp.Controllers
 
         public IActionResult Reserveren()
         {
-            return View();
+            var restaurant = restaurantController.GetAllRestaurantNames();
+
+            var model = new RestaurantAndEmptyReserveringModel { Restaurants = restaurant.ToList()};
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Reserveren(ReservationModel reserveringModel)
+        public IActionResult Reserveren(RestaurantAndEmptyReserveringModel restaurantAndEmptyReserveringModel)
         {
+           //kijk of de personen nog in het resorant kunnen
+
+            //kijk of er bij het gekozen restaurant nog tafels vrij zijn
+
+            //FUNCTIE getAvaliblePlaces
             
-            reservering.AddReservation(reserveringModel);
+
+
+            reservationDAL.AddReservation(restaurantAndEmptyReserveringModel.Reserveringen);
 
             return View();
 

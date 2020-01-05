@@ -1,38 +1,51 @@
-﻿@model IEnumerable<MODEL.Reservation.ReservationModel>
+﻿@model MODEL.RestaurantAndReserveringModel
+
 
 @{
     ViewData["Title"] = "AdminPage";
 }
 
 <h2>AdminPage</h2>
+<div class="">
+    <select name="restaurants">
+        @foreach (var item in Model.Restaurants)
+        {
+        <option value="">
+            @Html.DisplayFor(modelItem => item.restaurantName)
+        </option>
+        }
 
+    </select>
+
+    <input type="submit" name="Ophalen">
+</div>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ReservationID)
+                @Html.DisplayNameFor(model => model.Reserveringen[0].ReservationID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Reserveringen[0].Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.date)
+                @Html.DisplayNameFor(model => model.Reserveringen[0].date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.telNr)
+                @Html.DisplayNameFor(model => model.Reserveringen[0].telNr)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.amountOfPeaple)
+                @Html.DisplayNameFor(model => model.Reserveringen[0].amountOfPeaple)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.note)
+                @Html.DisplayNameFor(model => model.Reserveringen[0].note)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Reserveringen) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ReservationID)
