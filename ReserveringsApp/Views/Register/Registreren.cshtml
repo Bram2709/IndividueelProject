@@ -1,0 +1,64 @@
+﻿@model MODEL.UserModel
+@{ 
+    ViewData["Title"] = "Registreren";
+}
+
+
+<div class="registrerenForm">
+    <div class="row">
+        <div class="formRegistreren">
+            <h1 class="formH1Text">Registreren</h1>
+            <form asp-action="Registreren" asp-controller="Register">
+                <div class="row formInput">
+                    <div class="col-sm-4">
+                        Naam:
+                    </div>
+                    <div class="col-sm-4">
+                        <input asp-for="name" placeholder="Your name goes here" />
+                    </div>
+                </div>
+                <div class="row  formInput">
+                    <div class="col-sm-4">
+                        TelefoonNr:
+                    </div>
+
+                    <div class="col-sm-4">
+                        <input asp-for="telNr" placeholder="Your name goes here" />
+                    </div>
+                </div>
+
+                <div class="row  formInput">
+                    <div class="col-sm-4">
+                        Gebruikersnaam:
+                    </div>
+
+                    <div class="col-sm-4">
+                        <input asp-for="username" placeholder="Your name goes here" />
+                    </div>
+                </div>
+
+                <div class="row  formInput">
+                    <div class="col-sm-4">
+                        Wachtwoord:
+                    </div>
+
+                    <div class="col-sm-4">
+                        <input asp-for="password" placeholder="Your name goes here" />
+                    </div>
+                </div>
+
+
+
+
+                <div class="row formInput">
+                    <div class="col-lg-1">
+                        <input type="submit" value="Register" />
+                    </div>
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>

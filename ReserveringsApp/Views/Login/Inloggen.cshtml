@@ -1,0 +1,63 @@
+﻿@model MODEL.UserModel
+
+@{
+    ViewData["Title"] = "Login Page";
+}
+<div class="reserverenPage">
+    
+        <div class="row">
+            <div class="formInloggen">
+                <h1 class="formH1Text">Inloggen</h1>
+                <form asp-action="Inloggen" asp-controller="Home">
+                    <div class="row formInput">
+                        <div class="col-sm-4">
+                            Gebruikersnaam:
+                        </div>
+                        <div class="col-sm-4">
+                            <input asp-for="username" type="text" placeholder="Your name goes here" />
+                        </div>
+
+                    <div class="row formInput">
+                        <div class="col-sm-4">
+                        </div>
+
+                    </div>
+
+                    <div class="row  formInput">
+                        <div class="col-sm-4">
+                            Wachtwoord:
+                        </div>
+
+                        <div class="col-sm-4">
+                            <input asp-for="password" type="text" placeholder="Your name goes here" />
+                        </div>
+                    </div>
+
+                    <div class="row formInput">
+                        <div class="col-sm-4">
+                        </div>
+
+                    </div>
+
+                    <div class="row  formInput">
+                        <div class="col-lg-1">
+                            <input type="submit" value="Bevestig" />
+                        </div>
+
+                    </div>
+                    <div class="row  formInput">
+                        <div class="col-lg-10">
+                            <div>Nog geen Account?<a href="@Url.Action("Registreren", null, new { area = string.Empty, controller = "Register" }, @Context.Request.Scheme)">Maak er hier een aan.</a></div>
+
+                        </div>
+
+                    </div>
+
+                    </form>
+
+</div>
+        </div>
+
+
+
+</div>

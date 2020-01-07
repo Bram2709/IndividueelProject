@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*@model IEnumerable<ReserveringsApp.Models.Reservering>
+
+@foreach (var item in Model)
+{
+    @Html.DisplayFor(modelItem => item.naam)
+
+}*@
+
+
+<div class="homePage">
+    <div class="container">
+        <div class="row">
+            <div class="welkomDiv">
+                <p>
+                    <h1>Welkom @ViewBag.user2</h1>
+                    <h5>
+
+                    </h5>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="etenInfo">
+
+
+                <div class="etenInfoItem" style="float:left">
+                    <div class="col-sm">
+                        <img src="~/images/etenRestaurant.jpg" class="imgEten" />
+                        <p class="etenInfoText">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                        </p>
+                    </div>
+                </div>
+
+                <div class="etenInfoItem" style="float:right">
+                    <div class="col-sm">
+                        <img src="~/images/etenRestaurant2.jpg" class="imgEten" />
+                        <p class="etenInfoText">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                        </p>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

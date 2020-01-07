@@ -1,0 +1,98 @@
+﻿@model MODEL.RestaurantAndEmptyReserveringModel
+@{
+    ViewData["Title"] = "Reserveren";
+}
+<div class="reserverenPage">
+    
+        <div class="row">
+            <div class="formReserveren">
+                <h1 class="formH1Text">Reserveren</h1>
+                <form asp-action="Reserveren" asp-controller="Reservation">
+                    <div class="row formInput">
+                        <div class="col-sm-4">
+                            Naam:
+                        </div>
+                        <div class="col-sm-4">
+                            <input asp-for="Reserveringen.Name" placeholder="Your name goes here" />
+                        </div>
+                    </div>
+                    <div class="row  formInput">
+                        <div class="col-sm-4">
+                            Datum:
+                        </div>
+
+                        <div class="col-sm-4">
+                            <input type="date" asp-for="Reserveringen.date" />
+                        </div>
+                    </div>
+                    <div class="row  formInput">
+                        <div class="col-sm-4">
+                            TelefoonNr:
+                        </div>
+
+                        <div class="col-sm-4">
+                            <input asp-for="Reserveringen.telNr" placeholder="Your phone number goes here" />
+                        </div>
+
+                    </div>
+                    <div class="row  formInput">
+                        <div class="col-sm-4">
+                            Aantal personen:
+                        </div>
+
+                        <div class="col-sm-1">
+                            <input type="number" asp-for="Reserveringen.amountOfPeaple" />
+                        </div>
+
+                    </div>
+                    <div class="row  formInput">
+                        <div class="col-sm-4">Opmerkingen:</div>
+
+                        <div class="col-sm-4">
+                            <input type="text" asp-for="Reserveringen.note" />
+                        </div>
+
+
+                    </div>
+
+                    <div class="row  formInput">
+                        <div class="col-sm-4">Restaurant:</div>
+                        @try
+                        {
+                            <div class="col-sm-4">
+                                <select asp-for="Reserveringen.restaurant">
+                                    @foreach (var item in Model.Restaurants)
+                                    {
+                                        <option value="@item">@item</option>
+                                    }
+
+                                </select>
+                                @*@Html.DropDownListFor(model => model.Restaurants, new SelectList(Model.Restaurants))*@
+
+                            </div>
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
+
+
+
+                    </div>
+
+                    <div class="row  formInput">
+                        <div class="col-lg-1">
+                            <input type="submit" value="Reserveer" />
+                        </div>
+
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+
+
+    
+</div>

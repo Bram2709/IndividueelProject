@@ -1,0 +1,266 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+
+body {
+    /*margin-top: 254px;*/
+    padding-bottom: 20px;
+    background-color: #f8f8f8;
+    height:400px;
+}
+
+hr {
+    border: none !important;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+.navbar-fixed-top{
+    position: relative !important;
+}
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+.container {
+    border: none;
+    margin-top: 0.6%;
+}
+
+.navbar {
+    border-bottom: none;
+    box-shadow: 0 3px 8px -3px gray;
+    text-align:center;
+}
+
+.navbar-brand {
+    position:relative;
+    float:none;
+    top: 10px;
+}
+
+.navbar-inverse{
+    background-color:white;
+}
+
+.menuitems {
+    display: flex;
+    justify-content: center;
+}
+
+ul {
+    display: inline-table;
+    font-size: 20pt;
+}
+
+.container body-content{
+    border:none;
+}
+
+.menuBar:hover{
+    color:black !important;
+}
+#logo {
+}
+
+.logoClass {
+}
+
+
+/*Index/Home page styling*/
+.imgEten{
+    height:auto;
+    width: 450px;
+}
+
+.etenInfoItem {
+    padding: 40px;
+    background-color: white;
+    box-shadow: 0 0px 5px 0px lightgray;
+    max-width:530px;
+}
+
+.etenInfoText{
+    margin-top:2%;
+}
+
+.etenInfo {
+    margin-top: 3%;
+}
+
+/*Reserveren page*/
+
+.formReserveren {
+    padding: 1px;
+    background-color: white;
+    height: 500px;
+    width: 500px;
+    margin: 10px auto auto auto;
+    box-shadow: 0 0px 5px 0px lightgray;    
+}
+
+.formH1Text{
+    text-align:center;
+    margin: 10px 0px;
+}
+
+.formClassStyle {
+    margin-left: 90px;
+}
+
+.formInput {
+    padding: 10px;
+}
+
+/*Login page*/
+
+.formInloggen {
+    padding: 1px;
+    background-color: white;
+    height: 250px;
+    width: 500px;
+    margin: 10px auto auto auto;
+    box-shadow: 0 0px 5px 0px lightgray;
+}
+
+/*Registreer Page*/
+
+.formRegistreren {
+    padding: 1px;
+    background-color: white;
+    height: 300px;
+    width: 500px;
+    margin: 10px auto auto auto;
+    box-shadow: 0 0px 5px 0px lightgray;
+}
+
+/*Medewerker Page*/
+/*Tabs*/
+.tab {
+    overflow: hidden;
+    box-shadow: 0 0px 5px 0px lightgray;
+    background-color: white;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    background-color: inherit;
+    
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+    background-color: white;
+    box-shadow: 0 5px 5px 0px lightgray;    
+}
+
+
+/*Table*/
+table thead tr {
+    height: 60px;
+    background: #36304a;
+}
+
+.table100-head th {
+    font-family: OpenSans-Regular;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.2;
+    font-weight: unset;
+}
+table {
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+table tbody tr {
+    height: auto;
+    padding: 37px 0;
+}
+
+table tbody tr {
+    height: 50px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+.column1 {
+    width: 100px;
+    padding-left: 40px;
+}
+
+.column2 {
+    width: 160px;
+}
+
+.column3 {
+    width: 50px;
+}
+
+.column4 {
+    width: 20px;
+    text-align: right;
+}
+
+.column5 {
+    width: 30px;
+    text-align: right;
+}
+
+.column6 {
+    width: 222px;
+    text-align: right;
+    padding-right: 62px;
+}
+
