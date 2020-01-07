@@ -33,6 +33,9 @@ namespace ReserveringsApp.Controllers
             //kijk of er bij het gekozen restaurant nog tafels vrij zijn
 
             //FUNCTIE getAvaliblePlaces
+
+            //new comit
+
  
 
             reservationController.AddReservation(restaurantAndEmptyReserveringModel.Reserveringen);
