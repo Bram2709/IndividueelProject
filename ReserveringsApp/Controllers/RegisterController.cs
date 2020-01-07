@@ -24,7 +24,16 @@ namespace ReserveringsApp.Controllers
         [HttpPost]
         public IActionResult Registreren(UserModel uniqueUser)
         {
-            userController.AddUser(uniqueUser);
+            try
+            {
+                userController.AddUser(uniqueUser);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             //als de user zijn account aanmaakt word hij automatisch ingelogd
 
 

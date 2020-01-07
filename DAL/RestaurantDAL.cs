@@ -32,6 +32,7 @@ namespace DAL
                 restaurantModel.restaurantName = dataReader["Name"].ToString();
                 restaurantModel.restaurantAdres = dataReader["Adres"].ToString();
                 restaurantModel.maxAmountOfPeaple = Convert.ToInt32(dataReader["MaxAmountOfPeaple"]);
+                restaurantModel.CurrentAmountOfPeaple = Convert.ToInt32(dataReader["CurrentAmountOfPeaple"]);
 
                 restaurantModels.Add(restaurantModel);
             }
@@ -39,6 +40,34 @@ namespace DAL
             DbCon.Close();
 
             return restaurantModels;
+        }
+
+        public RestaurantModel GetRestaurantByName(string restaurantName)
+        {
+            RestaurantModel restaurantModel = new RestaurantModel();
+
+            DbCon = new MySqlConnection(connString);
+            DbCon.Open();
+
+            string query = "SELECT * FROM `restaurant` WHERE `Name` = '" + restaurantName+"'";
+
+            MySqlCommand command = new MySqlCommand(query, DbCon);
+            MySqlDataReader dataReader = command.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                restaurantModel.restaurantID = Convert.ToInt32(dataReader["RestaurantID"]);
+                restaurantModel.restaurantName = dataReader["Name"].ToString();
+                restaurantModel.restaurantAdres = dataReader["Adres"].ToString();
+                restaurantModel.maxAmountOfPeaple = Convert.ToInt32(dataReader["MaxAmountOfPeaple"]);
+                restaurantModel.CurrentAmountOfPeaple = Convert.ToInt32(dataReader["CurrentAmountOfPeaple"]);
+
+            }
+           
+
+            DbCon.Close();
+
+            return restaurantModel;
         }
     }
 }

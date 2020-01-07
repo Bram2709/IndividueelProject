@@ -17,10 +17,19 @@ namespace ReserveringsApp.Controllers
 
         public IActionResult AdminPage()
         {
-            var reserveringen = reservationController.GetAll();
-            var restaurant = restaurantController.GetAll();
+            RestaurantAndReserveringModel model = new RestaurantAndReserveringModel();
+            try
+            {
+                var reserveringen = reservationController.GetAll();
+                var restaurant = restaurantController.GetAll();
 
-            var model = new RestaurantAndReserveringModel { Restaurants = restaurant.ToList(), Reserveringen = reserveringen.ToList() };
+                model = new RestaurantAndReserveringModel { Restaurants = restaurant.ToList(), Reserveringen = reserveringen.ToList() };
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
 
             return View(model);
         }

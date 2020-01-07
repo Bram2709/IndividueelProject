@@ -8,9 +8,10 @@ namespace LOGIC
 {
     public class RestaurantController
     {
+        RestaurantDAL restaurantDAL = new RestaurantDAL();
         public List<RestaurantModel> GetAll()
         {
-            RestaurantDAL restaurantDAL = new RestaurantDAL();
+            restaurantDAL = new RestaurantDAL();
 
             var allRestaurants = restaurantDAL.GetAll();
             return allRestaurants;
@@ -34,5 +35,19 @@ namespace LOGIC
 
         //}
 
+        public RestaurantModel GetRestaurantModelByName(string name)
+        {
+            var x = restaurantDAL.GetRestaurantByName(name);
+            return x;
+        }
+
+        
+
+        public int GetAvaliblePlaces(string restaurant)
+        {
+            RestaurantModel restaurantModel = restaurantDAL.GetRestaurantByName(restaurant);
+
+            return restaurantModel.maxAmountOfPeaple - restaurantModel.CurrentAmountOfPeaple;
+        }
     }
 }

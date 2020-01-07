@@ -18,29 +18,54 @@ namespace ReserveringsApp.Controllers
 
         public IActionResult Reserveren()
         {
-            var restaurant = restaurantController.GetAllRestaurantNames();
+            RestaurantAndEmptyReserveringModel model = new RestaurantAndEmptyReserveringModel();
+            try
+            {
+                var restaurant = restaurantController.GetAllRestaurantNames();
 
-            var model = new RestaurantAndEmptyReserveringModel { Restaurants = restaurant.ToList() };
+                model = new RestaurantAndEmptyReserveringModel { Restaurants = restaurant.ToList() };
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
 
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Reserveren(RestaurantAndEmptyReserveringModel restaurantAndEmptyReserveringModel)
+        public IActionResult Reserveren(RestaurantAndEmptyReserveringModel model)
         {
-            //kijk of de personen nog in het resorant kunnen
+            RestaurantAndEmptyReserveringModel models = new RestaurantAndEmptyReserveringModel();
+            try
+            {
+                if (reservationController.TryToAddReservation(model.Reserveringen, restaurantController.GetRestaurantModelByName(model.Reserveringen.restaurant)))//max aantal mensen van het restaurant < current aantal mensen + reserveringen.AmountOfPeaple
+                {
+                    ViewBag.Result = "Toveogen van reservering is gelukt";
 
-            //kijk of er bij het gekozen restaurant nog tafels vrij zijn
+                    if (true)
+                    {
 
-            //FUNCTIE getAvaliblePlaces
+                    }
+                }
+                else
+                {
+                    ViewBag.Result = "Er zijn niet genoeg plaatsen vrij om te kunnen reserveren";
+                }
 
-            //new comit
+                var restaurant = restaurantController.GetAllRestaurantNames();
 
- 
+                models = new RestaurantAndEmptyReserveringModel { Restaurants = restaurant.ToList() };
+            }
+            catch (Exception)
+            {
 
-            reservationController.AddReservation(restaurantAndEmptyReserveringModel.Reserveringen);
+                throw;
+            }
 
-            return View();
+            return View(models);
 
         }
 

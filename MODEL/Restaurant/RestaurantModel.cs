@@ -11,5 +11,6 @@ namespace MODEL.Restaurant
         public string restaurantName { get; set; }
         public string restaurantAdres { get; set; }
         public int maxAmountOfPeaple { get; set; }
+        public int CurrentAmountOfPeaple { get; set; }
     }
 }

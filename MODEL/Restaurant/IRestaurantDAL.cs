@@ -7,5 +7,6 @@ namespace MODEL.Restaurant
     public interface IRestaurantDAL
     {
         List<RestaurantModel> GetAll();
+        RestaurantModel GetRestaurantByName(string restaurantName);
     }
 }

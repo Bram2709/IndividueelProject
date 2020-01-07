@@ -24,14 +24,23 @@ namespace ReserveringsApp.Controllers
         public IActionResult Index()
         {
             //ReserveringContext context = HttpContext.RequestServices.GetService(typeof(ReserveringsApp.Models.ReserveringContext)) as ReserveringContext;
-           
-            List<UserModel> user = userDAL.GetAll();
-            ViewBag.user = user;
 
-            UserController userController = new UserController();
-            UserModel user2 = userController.GetUserByName("Bram");
+            try
+            {
+                List<UserModel> user = userDAL.GetAll();
+                ViewBag.user = user;
 
-            ViewBag.user2 = user2;
+                UserController userController = new UserController();
+                UserModel user2 = userController.GetUserByName("sadfasdfsadfasfsadfsad");
+
+                ViewBag.user2 = user2.username;
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
 
             return View();
         }
