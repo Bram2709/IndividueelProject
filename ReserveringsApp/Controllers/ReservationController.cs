@@ -39,8 +39,7 @@ namespace ReserveringsApp.Controllers
         public IActionResult Reserveren(RestaurantAndEmptyReserveringModel model)
         {
             RestaurantAndEmptyReserveringModel models = new RestaurantAndEmptyReserveringModel();
-            try
-            {
+            
                 if (reservationController.TryToAddReservation(model.Reserveringen, restaurantController.GetRestaurantModelByName(model.Reserveringen.restaurant)))//max aantal mensen van het restaurant < current aantal mensen + reserveringen.AmountOfPeaple
                 {
                     ViewBag.Result = "Toveogen van reservering is gelukt";
@@ -52,18 +51,13 @@ namespace ReserveringsApp.Controllers
                 }
                 else
                 {
-                    ViewBag.Result = "Er zijn niet genoeg plaatsen vrij om te kunnen reserveren";
+                    ViewBag.Result = "Toevoegen van de reservering is mislukt";
                 }
 
                 var restaurant = restaurantController.GetAllRestaurantNames();
 
                 models = new RestaurantAndEmptyReserveringModel { Restaurants = restaurant.ToList() };
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+          
 
             return View(models);
 

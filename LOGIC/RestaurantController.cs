@@ -47,7 +47,7 @@ namespace LOGIC
         {
             RestaurantModel restaurantModel = restaurantDAL.GetRestaurantByName(restaurant);
 
-            return restaurantModel.maxAmountOfPeaple - restaurantModel.CurrentAmountOfPeaple;
+            return restaurantModel.maxAmountOfPeaple - restaurantDAL.GetCurrentAmountOfPeapleInRestaurant(restaurantModel);
         }
     }
 }

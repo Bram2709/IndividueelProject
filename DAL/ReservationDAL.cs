@@ -62,7 +62,35 @@ namespace DAL
             MySqlDataReader dataReader = command.ExecuteReader();
 
             DbCon.Close();
+        }
 
+        public ReservationModel getReservation(ReservationModel reservation)
+        {
+            ReservationModel resrvationModel = new ReservationModel();
+
+            DbCon = new MySqlConnection(connString);
+            DbCon.Open();
+
+            string query = "SELECT `ReserveringID`, `Naam`, `Datum`, `TelNr`, `AantalPersonen`, `Opmerkingen` FROM `reservering` " +
+                "WHERE `Naam` = '"+reservation.Name+ "' AND `AantalPersonen`= '" + reservation.amountOfPeaple + "'";
+
+            MySqlCommand command = new MySqlCommand(query, DbCon);
+            MySqlDataReader dataReader = command.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                resrvationModel.ReservationID = Convert.ToInt32(dataReader["ReserveringID"]);
+                resrvationModel.Name = dataReader["Naam"].ToString();
+                resrvationModel.date = (DateTime)dataReader["Datum"];
+                resrvationModel.telNr = dataReader["TelNr"].ToString();
+                resrvationModel.amountOfPeaple = Convert.ToInt32(dataReader["AantalPersonen"]);
+                resrvationModel.note = dataReader["Opmerkingen"].ToString();
+
+            }
+
+            DbCon.Close();
+
+            return resrvationModel;
 
         }
     }
