@@ -32,7 +32,7 @@ namespace DAL
                 restaurantModel.restaurantName = dataReader["Name"].ToString();
                 restaurantModel.restaurantAdres = dataReader["Adres"].ToString();
                 restaurantModel.maxAmountOfPeaple = Convert.ToInt32(dataReader["MaxAmountOfPeaple"]);
-                restaurantModel.CurrentAmountOfPeaple = Convert.ToInt32(dataReader["CurrentAmountOfPeaple"]);
+                //restaurantModel.CurrentAmountOfPeaple = Convert.ToInt32(dataReader["CurrentAmountOfPeaple"]);
 
                 restaurantModels.Add(restaurantModel);
             }
@@ -60,7 +60,7 @@ namespace DAL
                 restaurantModel.restaurantName = dataReader["Name"].ToString();
                 restaurantModel.restaurantAdres = dataReader["Adres"].ToString();
                 restaurantModel.maxAmountOfPeaple = Convert.ToInt32(dataReader["MaxAmountOfPeaple"]);
-                restaurantModel.CurrentAmountOfPeaple = Convert.ToInt32(dataReader["CurrentAmountOfPeaple"]);
+                //restaurantModel.CurrentAmountOfPeaple = Convert.ToInt32(dataReader["CurrentAmountOfPeaple"]);
 
             }
            
@@ -68,6 +68,30 @@ namespace DAL
             DbCon.Close();
 
             return restaurantModel;
+        }
+
+        public int GetCurrentAmountOfPeapleInRestaurant(RestaurantModel restaurant)
+        {
+            int currAmountOfPeapleInt = 0;
+            
+            DbCon = new MySqlConnection(connString);
+            DbCon.Open();
+
+            string query = "SELECT SUM(`forThisAmountOfPeaple`) FROM `table` WHERE `RestaurantID` = '"+restaurant.restaurantID+"' AND `ReservationID`IS NOT NULL";
+
+            MySqlCommand command = new MySqlCommand(query, DbCon);
+            MySqlDataReader dataReader = command.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+
+                currAmountOfPeapleInt = Convert.ToInt32(dataReader.GetString(0));
+            }
+
+
+            DbCon.Close();
+
+            return currAmountOfPeapleInt;
         }
     }
 }
