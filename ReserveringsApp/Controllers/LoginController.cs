@@ -35,3 +35,13 @@ namespace ReserveringsApp.Controllers
         }
     }
 }
+
+
+//SELECT `reservering`.`Naam`,`reservering`.`Datum`, `reservering`.`TelNr`, `reservering`.`AantalPersonen`, `reservering`.`Opmerkingen`,`table`.`RestaurantID` FROM `reservering` LEFT JOIN `table`  ON `reservering`.`ReserveringID` = `table`.`ReservationID`
+
+//SELECT `reservering`.`Naam`,`reservering`.`Datum`, `reservering`.`TelNr`, `reservering`.`AantalPersonen`, `reservering`.`Opmerkingen`,`table`.`RestaurantID` FROM `reservering` INNER JOIN `table`  ON `reservering`.`ReserveringID` = `table`.`ReservationID`
+
+//SELECT `reservering`.`Naam`,`reservering`.`Datum`, `reservering`.`TelNr`, `reservering`.`AantalPersonen`, `reservering`.`Opmerkingen`,`restaurant`.`Name`
+//FROM `reservering` 
+//INNER JOIN `table`  ON `reservering`.`ReserveringID` = `table`.`ReservationID`
+//INNER JOIN `restaurant`  ON `restaurant`.`RestaurantID` = `table`.`RestaurantID`

@@ -4,7 +4,7 @@ using System.Text;
 using MODEL.Reservation;
 using System.Data.SqlClient;
 using System.Data;
-
+using MODEL.AdvancedModels;
 using MySql.Data.MySqlClient;
 
 
@@ -93,5 +93,41 @@ namespace DAL
             return resrvationModel;
 
         }
+
+        public List<AllReservationData> GetAllReservationData()
+        {
+            List<AllReservationData> allReservations = new List<AllReservationData>();
+
+            DbCon = new MySqlConnection(connString);
+            DbCon.Open();
+
+            string query = "SELECT `reservering`.`Naam`,`reservering`.`Datum`, `reservering`.`TelNr`, `reservering`.`AantalPersonen`, `reservering`.`Opmerkingen`,`restaurant`.`Name` " +
+                "FROM `reservering` INNER JOIN `table`  " +
+                "ON `reservering`.`ReserveringID` = `table`.`ReservationID` " +
+                "INNER JOIN `restaurant`  " +
+                "ON `restaurant`.`RestaurantID` = `table`.`RestaurantID`";
+
+            MySqlCommand command = new MySqlCommand(query, DbCon);
+            MySqlDataReader dataReader = command.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                AllReservationData resrvationModel = new AllReservationData();
+
+                resrvationModel.reservationName = dataReader["Naam"].ToString();
+                resrvationModel.date = (DateTime)dataReader["Datum"];
+                resrvationModel.telNr = dataReader["TelNr"].ToString();
+                resrvationModel.amountOfPeaple = Convert.ToInt32(dataReader["AantalPersonen"]);
+                resrvationModel.note = dataReader["Opmerkingen"].ToString();
+                resrvationModel.restaurantName = dataReader["Name"].ToString();
+
+                allReservations.Add(resrvationModel);
+            }
+
+            DbCon.Close();
+
+            return allReservations;
+        }
     }
 }
+

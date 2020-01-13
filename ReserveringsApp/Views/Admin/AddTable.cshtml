@@ -8,7 +8,7 @@
     <div class="row">
         <div class="formRegistreren">
             <h1 class="formH1Text">AddTable</h1>
-            <form asp-action="AccountDetails" asp-controller="Register">
+            <form asp-action="AddTable" asp-controller="Admin">
 
 
                 <div class="row formInput">
@@ -16,15 +16,28 @@
                         Restaurant:
                     </div>
                     <div class="col-sm-4">
-                        <select name="restaurants" asp-for="tableModel.restaurantID">
-                            @foreach (var item in Model.restaurantModels)
-                            {
-                                <option value="@item.restaurantID">
-                                    @Html.DisplayFor(modelItem => item.restaurantName)
-                                </option>
-                            }
 
-                        </select>
+                        @Html.DropDownListFor(
+    m => m.tableModel.restaurantID, // Specifies where to store selected country Id
+                                    // It needs to be null for the default selection to work!
+
+    new SelectList(Model.restaurantModels,
+                   "restaurantID",
+                   "restaurantName"
+                   ),
+
+    // Text of option that prompts user to select
+    "Select the restaurant to add table to")
+
+                        @*<select name="restaurants" asp-for="tableModel.restaurantID">
+            @foreach (var item in Model.restaurantModels)
+            {
+                <option value="5">
+                    @Html.DisplayFor(modelItem => item.restaurantName)
+                </option>
+            }
+
+        </select>*@
                     </div>
                 </div>
                 <div class="row formInput">

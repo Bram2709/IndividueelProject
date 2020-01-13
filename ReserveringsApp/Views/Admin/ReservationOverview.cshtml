@@ -1,0 +1,60 @@
+﻿@model List<MODEL.AdvancedModels.AllReservationData>
+
+@{
+    ViewData["Title"] = "ReservationOverview";
+}
+
+<h2>ReservationOverview</h2>
+
+
+<table class="table">
+    <thead style="color:white">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].reservationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].telNr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].amountOfPeaple)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].restaurantName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.reservationName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telNr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amountOfPeaple)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.note)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.restaurantName)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
