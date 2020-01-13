@@ -13,6 +13,8 @@ namespace ReserveringsApp.Controllers
 {
     public class LoginController : Controller
     {
+        User user = new User();
+        UserController userController = new UserController();
         // GET: /<controller>/
         public IActionResult Inloggen()
         {
@@ -22,8 +24,8 @@ namespace ReserveringsApp.Controllers
         [HttpPost]
         public IActionResult Inloggen(string username,string password)
         {
-            UserController userController = new UserController();
-            if(userController.LoginCheck(username, password))
+            
+            if(user.LoginCheck(username, password))
             {
                 UserModel user = userController.GetUserByName(username);
 
@@ -35,3 +37,13 @@ namespace ReserveringsApp.Controllers
         }
     }
 }
+
+
+//SELECT `reservering`.`Naam`,`reservering`.`Datum`, `reservering`.`TelNr`, `reservering`.`AantalPersonen`, `reservering`.`Opmerkingen`,`table`.`RestaurantID` FROM `reservering` LEFT JOIN `table`  ON `reservering`.`ReserveringID` = `table`.`ReservationID`
+
+//SELECT `reservering`.`Naam`,`reservering`.`Datum`, `reservering`.`TelNr`, `reservering`.`AantalPersonen`, `reservering`.`Opmerkingen`,`table`.`RestaurantID` FROM `reservering` INNER JOIN `table`  ON `reservering`.`ReserveringID` = `table`.`ReservationID`
+
+//SELECT `reservering`.`Naam`,`reservering`.`Datum`, `reservering`.`TelNr`, `reservering`.`AantalPersonen`, `reservering`.`Opmerkingen`,`restaurant`.`Name`
+//FROM `reservering` 
+//INNER JOIN `table`  ON `reservering`.`ReserveringID` = `table`.`ReservationID`
+//INNER JOIN `restaurant`  ON `restaurant`.`RestaurantID` = `table`.`RestaurantID`

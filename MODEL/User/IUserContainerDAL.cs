@@ -8,6 +8,8 @@ namespace MODEL
     {
         List<UserModel> GetAll();
         UserModel GetUserByUserName(string username);
-        
+        void AddUser(UserModel user);
+
+
     }
 }

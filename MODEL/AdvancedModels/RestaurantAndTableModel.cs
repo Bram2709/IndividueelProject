@@ -10,6 +10,5 @@ namespace MODEL
     {
         public TableModel tableModel { get; set; }
         public List<RestaurantModel> restaurantModels { get; set; }
-
     }
 }

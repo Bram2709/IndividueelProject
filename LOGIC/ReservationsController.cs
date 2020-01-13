@@ -6,6 +6,7 @@ using DAL;
 using MODEL.Restaurant;
 using System.Text.RegularExpressions;
 using MODEL.Table;
+using MODEL.AdvancedModels;
 
 namespace LOGIC
 {
@@ -67,5 +68,10 @@ namespace LOGIC
             
         }
 
+
+        public List<AllReservationData> GetAllReservationData()
+        {
+            return reservationDAL.GetAllReservationData();
+        }
     }
 }

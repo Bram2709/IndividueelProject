@@ -32,7 +32,7 @@ namespace LOGIC.Tests
         [TestMethod()]
         public void LoginCheckTest()
         {
-            UserController userController = new UserController();
+            User userController = new User();
 
             bool loginCheck = userController.LoginCheck("Bram","Bram1");
             Assert.IsTrue(loginCheck);
@@ -41,12 +41,10 @@ namespace LOGIC.Tests
         [TestMethod()]
         public void LoginCheckTest2()
         {
-            UserController userController = new UserController();
+            User userController = new User();
 
             bool loginCheck = userController.LoginCheck("Bram", "Bram2");
             Assert.IsFalse(loginCheck);
-
-
         }
     }
 }

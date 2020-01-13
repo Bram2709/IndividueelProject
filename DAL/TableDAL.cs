@@ -24,14 +24,13 @@ namespace DAL
             DbCon = new MySqlConnection(connString);
             DbCon.Open();
 
-            string query = "INSERT INTO `table`(`RestaurantID`,`AmountOfPeaple`) " +
+            string query = "INSERT INTO `table`(`RestaurantID`,`forThisAmountOfPeaple`) " +
                 "VALUES ('" + table.restaurantID + "','" + table.forThisAmountOfPeaple + "')";
 
             MySqlCommand command = new MySqlCommand(query, DbCon);
             MySqlDataReader dataReader = command.ExecuteReader();
 
            
-
             DbCon.Close();
 
         }
