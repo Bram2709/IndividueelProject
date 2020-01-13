@@ -4,6 +4,7 @@ using System.Text;
 using DAL;
 using MODEL;
 
+
 namespace LOGIC
 {
     public class User
@@ -12,6 +13,22 @@ namespace LOGIC
         public void EditUser(UserModel user)
         {
             userDAL.EditUser(user);
+        }
+
+        public bool LoginCheck(string username, string password)
+        {
+            UserModel thisUser = userDAL.GetUserByUserName(username);
+
+            if (thisUser.username == username && thisUser.password == password)
+            {
+                //login is succesfull
+                return true;
+            }
+            else
+            {
+                //login data incorrect
+                return false;
+            }
         }
     }
 }

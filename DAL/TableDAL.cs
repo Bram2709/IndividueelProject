@@ -31,7 +31,6 @@ namespace DAL
             MySqlDataReader dataReader = command.ExecuteReader();
 
            
-
             DbCon.Close();
 
         }

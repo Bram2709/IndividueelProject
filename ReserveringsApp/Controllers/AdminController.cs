@@ -19,7 +19,25 @@ namespace ReserveringsApp.Controllers
 
         public IActionResult AdminPage()
         {
-            return View();
+            int userLvl = 0;
+            try
+            {
+                userLvl = (int)HttpContext.Session.GetInt32("UserLvl");
+            }
+            catch (Exception)
+            {
+                userLvl = 0;
+
+            }
+
+            if (userLvl == 0 && userLvl < 5)
+            {
+                return View("Views/Login/Inloggen.cshtml");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpPost]
@@ -49,37 +67,23 @@ namespace ReserveringsApp.Controllers
 
         public IActionResult ReservationOverview()
         {
-            int userLvl = 0;
+            
+
+            
+            List<AllReservationData> model = new List<AllReservationData>();
             try
             {
-                userLvl = (int)HttpContext.Session.GetInt32("UserLvl");
+
+                model = reservationController.GetAllReservationData();
             }
             catch (Exception)
             {
-                userLvl = 0;
-
+                throw;
             }
 
-            if (userLvl == 0 && userLvl < 5)
-            {
-                return View("Views/Login/Inloggen.cshtml");
-            }
-            else
-            {
-                List<AllReservationData> model = new List<AllReservationData>();
-                try
-                {
 
-                    model = reservationController.GetAllReservationData();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-
-
-                return View(model);
-            }
+            return View(model);
+            
 
         }
 

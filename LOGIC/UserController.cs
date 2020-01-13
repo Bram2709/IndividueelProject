@@ -29,21 +29,5 @@ namespace LOGIC
             userdal.AddUser(user);
         }
 
-        public bool LoginCheck(string username, string password)
-        {
-            UserModel thisUser = userdal.GetUserByUserName(username);
-
-            if (thisUser.username == username && thisUser.password == password)
-            {
-                //login is succesfull
-                return true;
-            }
-            else
-            {
-                //login data incorrect
-                return false;
-            }
-
-        }
     }
 }

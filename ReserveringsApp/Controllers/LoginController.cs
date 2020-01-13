@@ -13,6 +13,8 @@ namespace ReserveringsApp.Controllers
 {
     public class LoginController : Controller
     {
+        User user = new User();
+        UserController userController = new UserController();
         // GET: /<controller>/
         public IActionResult Inloggen()
         {
@@ -22,8 +24,8 @@ namespace ReserveringsApp.Controllers
         [HttpPost]
         public IActionResult Inloggen(string username,string password)
         {
-            UserController userController = new UserController();
-            if(userController.LoginCheck(username, password))
+            
+            if(user.LoginCheck(username, password))
             {
                 UserModel user = userController.GetUserByName(username);
 

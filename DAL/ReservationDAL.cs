@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 
 namespace DAL
 {
-    public class ReservationDAL : IReservationDAL
+    public class ReservationDAL : IReservationDAL, IReservationController
     {
         private string connString = "server=localhost;database=reserveringssysteem;user=root;password=;";
 
@@ -127,6 +127,11 @@ namespace DAL
             DbCon.Close();
 
             return allReservations;
+        }
+
+        public void EditReservation(ReservationModel reservation)
+        {
+            throw new NotImplementedException();
         }
     }
 }

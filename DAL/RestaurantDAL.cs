@@ -6,7 +6,7 @@ using MySql.Data.MySqlClient;
 
 namespace DAL
 {
-    public class RestaurantDAL : IRestaurantDAL
+    public class RestaurantDAL : IRestaurantDAL,IRestaurantController
     {
         private string connString = "server=localhost;database=reserveringssysteem;user=root;password=;";
 
@@ -92,6 +92,16 @@ namespace DAL
             DbCon.Close();
 
             return currAmountOfPeapleInt;
+        }
+
+        public void AddRestaurant(RestaurantModel restaurant)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditRestaurant(RestaurantModel restaurant)
+        {
+            throw new NotImplementedException();
         }
     }
 }
