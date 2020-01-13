@@ -29,10 +29,6 @@ namespace ReserveringsApp.Controllers
                
             }
 
-
-
-
-
             if (userLvl == 0 && userLvl < 5)
             {
                 return View("Views/Login/Inloggen.cshtml");
@@ -63,5 +59,12 @@ namespace ReserveringsApp.Controllers
         {
             return View();
         }
+
+        public IActionResult AddTable()
+        {
+            return View();
+        }
+
+
     }
 }

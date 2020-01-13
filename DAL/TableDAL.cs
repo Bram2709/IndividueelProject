@@ -18,6 +18,25 @@ namespace DAL
             throw new NotImplementedException();
         }
 
+        public void AddTable(TableModel table)
+        {
+          
+            DbCon = new MySqlConnection(connString);
+            DbCon.Open();
+
+            string query = "INSERT INTO `table`(`RestaurantID`,`AmountOfPeaple`) " +
+                "VALUES ('" + table.restaurantID + "','" + table.forThisAmountOfPeaple + "')";
+
+            MySqlCommand command = new MySqlCommand(query, DbCon);
+            MySqlDataReader dataReader = command.ExecuteReader();
+
+           
+
+            DbCon.Close();
+
+        }
+
+
         public bool IsThereAnAvailibleTalbe(ReservationModel reservation)
         {
             List<TableModel> tableModels = new List<TableModel>();
