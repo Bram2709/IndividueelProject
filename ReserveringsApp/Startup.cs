@@ -28,8 +28,6 @@ namespace ReserveringsApp
         {
             services.AddDistributedMemoryCache();
 
-
-
             services.AddSession(options =>
             {
                 // Set a short timeout for easy testing.
@@ -51,7 +49,7 @@ namespace ReserveringsApp
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            //services.Add(new ServiceDescriptor(typeof(ReserveringContext), new ReserveringContext(Configuration.GetConnectionString("DefaultConnection"))));
+            services.Add(new ServiceDescriptor(typeof(ReserveringContext), new ReserveringContext(Configuration.GetConnectionString("DefaultConnection"))));
 
         }
 
@@ -71,7 +69,6 @@ namespace ReserveringsApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -11,8 +11,7 @@ namespace LOGIC
         UserDAL userDAL = new UserDAL();
         public void EditUser(UserModel user)
         {
-            //check if user entered the righ values
-            userDAL.AddUser(user);
+            userDAL.EditUser(user);
         }
     }
 }

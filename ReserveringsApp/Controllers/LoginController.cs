@@ -27,8 +27,9 @@ namespace ReserveringsApp.Controllers
             {
                 UserModel user = userController.GetUserByName(username);
 
-                HttpContext.Session.SetString("UserID", user.userID.ToString());
+                HttpContext.Session.SetInt32("UserID", user.userID);
                 HttpContext.Session.SetString("Username", user.username.ToString());
+                HttpContext.Session.SetInt32("UserLvl", user.lvl);
             }
             return View();
         }

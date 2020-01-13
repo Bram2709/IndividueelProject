@@ -61,9 +61,9 @@ namespace DAL
 
             while (dataReader.Read())
             {
-                userModel.username = dataReader["ID"].ToString();
-                userModel.username = dataReader["Name"].ToString();
-                userModel.username = dataReader["TelNr"].ToString();
+                userModel.userID = Convert.ToInt32(dataReader["ID"]);
+                userModel.name = dataReader["Name"].ToString();
+                userModel.telNr = dataReader["TelNr"].ToString();
                 userModel.username = dataReader["Username"].ToString();
                 userModel.password = dataReader["Password"].ToString();
                 userModel.lvl = Convert.ToInt32(dataReader["Lvl"]);
@@ -74,7 +74,9 @@ namespace DAL
             return userModel;
         }
 
-        
+       
+
+
         public void AddUser(UserModel user)
         {
             DbCon = new MySqlConnection(connString);
@@ -95,7 +97,7 @@ namespace DAL
             DbCon.Open();
 
             string query = "UPDATE `users` SET `Name`='" + user.name + "',`TelNr`='" + user.telNr + "',`Username`='" + user.username + "'," +
-                "`Password`='" + user.password + "',`Lvl`='" + user.lvl + "' WHERE `ID` = '" + user.userID + "'";
+                "`Password`='" + user.password + "' WHERE `ID` = '" + user.userID + "'";
 
             MySqlCommand command = new MySqlCommand(query, DbCon);
             MySqlDataReader dataReader = command.ExecuteReader();
@@ -103,7 +105,5 @@ namespace DAL
             DbCon.Close();
 
         }
-
-
     }
 }
