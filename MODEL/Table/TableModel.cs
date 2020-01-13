@@ -9,7 +9,6 @@ namespace MODEL.Table
         public int tableID { get; set; }
         public int reservationID { get; set; }
         public int restaurantID { get; set; }
-     
         public int forThisAmountOfPeaple { get; set; }
     }
 }

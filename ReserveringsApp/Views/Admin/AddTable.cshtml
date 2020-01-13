@@ -1,16 +1,46 @@
-﻿@model MODEL.UserModelAndEmptyUserModel
+﻿@model MODEL.RestaurantAndTableModel;
 @{
-    ViewData["Title"] = "AccountDetails";
+    ViewData["Title"] = "AddTable";
 }
-
 
 
 <div class="registrerenForm">
     <div class="row">
         <div class="formRegistreren">
-            <h1 class="formH1Text">AccountDetails</h1>
+            <h1 class="formH1Text">AddTable</h1>
             <form asp-action="AccountDetails" asp-controller="Register">
+
+
                 <div class="row formInput">
+                    <div class="col-sm-4">
+                        Restaurant:
+                    </div>
+                    <div class="col-sm-4">
+                        <select name="restaurants" asp-for="tableModel.restaurantID">
+                            @foreach (var item in Model.restaurantModels)
+                            {
+                                <option value="@item.restaurantID">
+                                    @Html.DisplayFor(modelItem => item.restaurantName)
+                                </option>
+                            }
+
+                        </select>
+                    </div>
+                </div>
+                <div class="row formInput">
+                    <div class="col-sm-4">
+                        aantal personen:
+                    </div>
+                    <div class="col-sm-4">
+                        <input asp-for="tableModel.forThisAmountOfPeaple"  />
+                    </div>
+                </div>
+                
+
+
+
+
+                @*<div class="row formInput">
                     <div class="col-sm-4">
                         Naam:
                     </div>
@@ -46,7 +76,7 @@
                     <div class="col-sm-4">
                         <input asp-for="UserModelEmpty.password" placeholder="Your password goes here" />
                     </div>
-                </div>
+                </div>*@
 
 
 

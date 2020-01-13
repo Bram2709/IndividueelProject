@@ -74,8 +74,6 @@ namespace DAL
             return userModel;
         }
 
-       
-
 
         public void AddUser(UserModel user)
         {
