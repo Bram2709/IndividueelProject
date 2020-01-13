@@ -17,6 +17,13 @@ namespace LOGIC
             return (userModel);
         }
 
+        //public UserModel GetUserByUserName(string userName)
+        //{
+        //    UserModel userModel = userdal.GetUserByUserName(userName);
+
+        //    return (userModel);
+        //}
+
         public void AddUser(UserModel user)
         {
             userdal.AddUser(user);

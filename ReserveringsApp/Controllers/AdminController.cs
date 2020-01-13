@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using LOGIC;
 using Microsoft.AspNetCore.Mvc;
 using MODEL;
+using Microsoft.AspNetCore.Http;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,21 +18,44 @@ namespace ReserveringsApp.Controllers
 
         public IActionResult AdminPage()
         {
-            RestaurantAndReserveringModel model = new RestaurantAndReserveringModel();
+            int userLvl = 0;
             try
             {
-                var reserveringen = reservationController.GetAll();
-                var restaurant = restaurantController.GetAll();
-
-                model = new RestaurantAndReserveringModel { Restaurants = restaurant.ToList(), Reserveringen = reserveringen.ToList() };
+                userLvl = (int)HttpContext.Session.GetInt32("UserLvl");
             }
             catch (Exception)
             {
-                throw;
+                userLvl = 0;
+               
+            }
+
+
+
+
+
+            if (userLvl == 0 && userLvl < 5)
+            {
+                return View("Views/Login/Inloggen.cshtml");
+            }
+            else
+            {
+                RestaurantAndReserveringModel model = new RestaurantAndReserveringModel();
+                try
+                {
+                    var reserveringen = reservationController.GetAll();
+                    var restaurant = restaurantController.GetAll();
+
+                    model = new RestaurantAndReserveringModel { Restaurants = restaurant.ToList(), Reserveringen = reserveringen.ToList() };
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+
+                return View(model);
             }
             
-
-            return View(model);
         }
 
         [HttpPost]

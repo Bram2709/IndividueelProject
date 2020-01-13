@@ -1,0 +1,64 @@
+﻿@model MODEL.UserModelAndEmptyUserModel
+@{
+    ViewData["Title"] = "AccountDetails";
+}
+
+
+
+<div class="registrerenForm">
+    <div class="row">
+        <div class="formRegistreren">
+            <h1 class="formH1Text">AccountDetails</h1>
+            <form asp-action="AccountDetails" asp-controller="Register">
+                <div class="row formInput">
+                    <div class="col-sm-4">
+                        Naam:
+                    </div>
+                    <div class="col-sm-4">
+                        <input asp-for="UserModelEmpty.name" placeholder="@Model.UserModelFull.name" />
+                    </div>
+                </div>
+                <div class="row  formInput">
+                    <div class="col-sm-4">
+                        TelefoonNr:
+                    </div>
+
+                    <div class="col-sm-4">
+                        <input asp-for="UserModelEmpty.telNr" placeholder="@Model.UserModelFull.telNr" />
+                    </div>
+                </div>
+
+                <div class="row  formInput">
+                    <div class="col-sm-4">
+                        Gebruikersnaam:
+                    </div>
+
+                    <div class="col-sm-4">
+                        <input asp-for="UserModelEmpty.username" placeholder="@Model.UserModelFull.username" />
+                    </div>
+                </div>
+
+                <div class="row  formInput">
+                    <div class="col-sm-4">
+                        Wachtwoord:
+                    </div>
+
+                    <div class="col-sm-4">
+                        <input asp-for="UserModelEmpty.password" placeholder="Your password goes here" />
+                    </div>
+                </div>
+
+
+
+                <div class="row formInput">
+                    <div class="col-lg-1">
+                        <input type="submit" value="Register" />
+                    </div>
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
