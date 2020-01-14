@@ -25,6 +25,8 @@ namespace ReserveringsApp.Controllers
         public IActionResult Inloggen(string username,string password)
         {
             
+         
+
             if(user.LoginCheck(username, password))
             {
                 UserModel user = userController.GetUserByName(username);
