@@ -14,48 +14,57 @@
                             Gebruikersnaam:
                         </div>
                         <div class="col-sm-4">
-                            <input asp-for="username" type="text" placeholder="Your name goes here" />
+                            <input asp-for="username" type="text" placeholder="Your name goes here" id="username" />
                         </div>
 
-                    <div class="row formInput">
-                        <div class="col-sm-4">
-                        </div>
-
-                    </div>
-
-                    <div class="row  formInput">
-                        <div class="col-sm-4">
-                            Wachtwoord:
-                        </div>
-
-                        <div class="col-sm-4">
-                            <input asp-for="password" type="password" placeholder="Your name goes here" />
-                        </div>
-                    </div>
-
-                    <div class="row formInput">
-                        <div class="col-sm-4">
-                        </div>
-
-                    </div>
-
-                    <div class="row  formInput">
-                        <div class="col-lg-1">
-                            <input type="submit" value="Bevestig" />
-                        </div>
-
-                    </div>
-                    <div class="row  formInput">
-                        <div class="col-lg-10">
-                            <div>Nog geen Account?<a href="@Url.Action("Registreren", null, new { area = string.Empty, controller = "Register" }, @Context.Request.Scheme)">Maak er hier een aan.</a></div>
+                        <div class="row formInput">
+                            <div class="col-sm-4">
+                            </div>
 
                         </div>
 
-                    </div>
+                        <div class="row  formInput">
+                            <div class="col-sm-4">
+                                Wachtwoord:
+                            </div>
 
-                    </form>
+                            <div class="col-sm-4">
+                                <input asp-for="password" type="password" placeholder="Your name goes here" id="password" />
+                            </div>
+                        </div>
 
-</div>
+                        <div class="row formInput">
+                            <div class="col-sm-4">
+                            </div>
+
+                        </div>
+
+                        <div class="row  formInput">
+                            <div class="col-lg-1">
+                                <input type="submit" value="Bevestig" id="submit" />
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="row  formInput">
+                            <div class="col-lg-5">
+                                @ViewBag.loginData
+                            </div>
+
+                        </div>
+
+                        <div class="row  formInput">
+                            <div class="col-lg-10">
+                                <div>Nog geen Account?<a href="@Url.Action("Registreren", null, new { area = string.Empty, controller = "Register" }, @Context.Request.Scheme)">Maak er hier een aan.</a></div>
+
+                            </div>
+
+                        </div>
+
+</form>
+
+            </div>
         </div>
 
 
