@@ -30,10 +30,6 @@ namespace LOGIC
             return restaurantNames;
         }
 
-        //public RestaurantModel GetRestaurant()
-        //{
-
-        //}
 
         public RestaurantModel GetRestaurantModelByName(string name)
         {

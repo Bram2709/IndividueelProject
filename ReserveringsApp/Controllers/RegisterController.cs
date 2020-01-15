@@ -117,9 +117,10 @@ namespace ReserveringsApp.Controllers
             }
            
 
-
             return Redirect("AccountDetails");
             
         }
+
+        
     }
 }

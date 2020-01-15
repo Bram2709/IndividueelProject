@@ -1,9 +1,11 @@
-﻿@model MODEL.RestaurantAndEmptyReserveringModel
+﻿@model MODEL.AdvancedModels.ReservationEmptyReservationRestaurantModel
 @{
-    ViewData["Title"] = "Reservation";
+    ViewData["Title"] = "EditReservation";
 }
-<div class="reserverenPage">
-    
+
+
+    <div class="reserverenPage">
+
         <div class="row">
             <div class="formReserveren">
                 <h1 class="formH1Text">Reserveren</h1>
@@ -13,7 +15,7 @@
                             Naam:
                         </div>
                         <div class="col-sm-4">
-                            <input asp-for="Reserveringen.Name" placeholder="Your name goes here" id="reserveName"/>
+                            <input asp-for="reservationEmpty.Name" placeholder="@Model.reservationFull.Name" id="reserveName" />
                         </div>
                     </div>
                     <div class="row  formInput">
@@ -22,7 +24,7 @@
                         </div>
 
                         <div class="col-sm-4">
-                            <input type="date" asp-for="Reserveringen.date" id="date"/>
+                            <input type="date" asp-for="reservationEmpty.date" id="@Model.reservationFull.date" />
                         </div>
                     </div>
                     <div class="row  formInput">
@@ -31,7 +33,7 @@
                         </div>
 
                         <div class="col-sm-4">
-                            <input asp-for="Reserveringen.telNr" placeholder="Your phone number goes here" id="telNr"/>
+                            <input asp-for="reservationEmpty.telNr" placeholder="Your phone number goes here" id="@Model.reservationFull.telNr" />
                         </div>
 
                     </div>
@@ -41,7 +43,7 @@
                         </div>
 
                         <div class="col-sm-1">
-                            <input type="number" asp-for="Reserveringen.amountOfPeaple" id="amountOfPeaple"/>
+                            <input type="number" asp-for="reservationEmpty.amountOfPeaple" id="@Model.reservationFull.amountOfPeaple" />
                         </div>
 
                     </div>
@@ -49,7 +51,7 @@
                         <div class="col-sm-4">Opmerkingen:</div>
 
                         <div class="col-sm-4">
-                            <input type="text" asp-for="Reserveringen.note" id="note"/>
+                            <input type="text" asp-for="reservationEmpty.note" id="@Model.reservationFull.note" />
                         </div>
 
 
@@ -60,8 +62,8 @@
                         @try
                         {
                             <div class="col-sm-4">
-                                <select asp-for="Reserveringen.restaurant" id="restaurant">
-                                    @foreach (var item in Model.Restaurants)
+                                <select asp-for="reservationFull.restaurant" id="restaurant">
+                                    @foreach (var item in Model.restaurant)
                                     {
                                         <option value="@item">@item</option>
                                     }
@@ -83,7 +85,7 @@
 
                     <div class="row  formInput">
                         <div class="col-lg-1">
-                            <input type="submit" value="Reserveer" id="submit"/>
+                            <input type="submit" value="Reserveer" id="submit" />
                         </div>
 
                     </div>
@@ -94,5 +96,5 @@
         </div>
 
 
-    
-</div>
+
+    </div>

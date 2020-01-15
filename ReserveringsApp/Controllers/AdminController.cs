@@ -48,21 +48,39 @@ namespace ReserveringsApp.Controllers
 
         public IActionResult AddTable()
         {
-            RestaurantAndTableModel model = new RestaurantAndTableModel();
-            model.restaurantModels = restaurantController.GetAll();
-            return View(model);
+            try
+            {
+                RestaurantAndTableModel model = new RestaurantAndTableModel();
+                model.restaurantModels = restaurantController.GetAll();
+                return View(model);
+            }
+            catch (Exception)
+            {
+                return View();
+                throw;
+            }
+            
         }
 
         [HttpPost]
         public IActionResult AddTable(RestaurantAndTableModel model)
         {
-            tableController.AddTable(model.tableModel);
+            try
+            {
+                tableController.AddTable(model.tableModel);
 
-            RestaurantAndTableModel restaurantAndTableModel = new RestaurantAndTableModel();
-            restaurantAndTableModel.restaurantModels = restaurantController.GetAll();
+                RestaurantAndTableModel restaurantAndTableModel = new RestaurantAndTableModel();
+                restaurantAndTableModel.restaurantModels = restaurantController.GetAll();
 
 
-            return View(restaurantAndTableModel);
+                return View(restaurantAndTableModel);
+            }
+            catch (Exception)
+            {
+                return View();
+                throw;
+            }
+            
         }
 
         public IActionResult ReservationOverview()
