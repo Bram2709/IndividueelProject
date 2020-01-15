@@ -28,7 +28,15 @@ namespace ReserveringsApp.Controllers
         {
             try
             {
-                userController.AddUser(uniqueUser);
+                if (userController.AddUser(uniqueUser))
+                {
+                    ViewBag.RegisterData = "Register Succesfull";
+                }
+                else
+                {
+                    ViewBag.RegisterData = "Register Failed";
+                }
+                
 
             }
             catch (Exception)
@@ -39,7 +47,7 @@ namespace ReserveringsApp.Controllers
             //als de user zijn account aanmaakt word hij automatisch ingelogd
 
 
-            return View("Views/Login/Inloggen.cshtml");
+            return View();
         }
 
         public IActionResult AccountDetails()
@@ -73,38 +81,41 @@ namespace ReserveringsApp.Controllers
         [HttpPost]
         public IActionResult AccountDetails(UserModelAndEmptyUserModel userModel)
         {
-
-            UserModel userData = userController.GetUserByName(HttpContext.Session.GetString("Username"));
-
-            userModel.UserModelEmpty.userID = userData.userID;
-
-            if (userModel.UserModelEmpty.name == null)
+            try
             {
-                userModel.UserModelEmpty.name = userData.name;
-            }
-            if (userModel.UserModelEmpty.telNr == null)
-            {
-                userModel.UserModelEmpty.telNr = userData.telNr;
-            }
-            if (userModel.UserModelEmpty.username == null)
-            {
-                userModel.UserModelEmpty.username = userData.username;
-            }
-            if (userModel.UserModelEmpty.password == null)
-            {
-                userModel.UserModelEmpty.password = userData.password;
-            }
+                UserModel userData = userController.GetUserByName(HttpContext.Session.GetString("Username"));
 
+                userModel.UserModelEmpty.userID = userData.userID;
+
+                if (userModel.UserModelEmpty.name == null)
+                {
+                    userModel.UserModelEmpty.name = userData.name;
+                }
+                if (userModel.UserModelEmpty.telNr == null)
+                {
+                    userModel.UserModelEmpty.telNr = userData.telNr;
+                }
+                if (userModel.UserModelEmpty.username == null)
+                {
+                    userModel.UserModelEmpty.username = userData.username;
+                }
+                if (userModel.UserModelEmpty.password == null)
+                {
+                    userModel.UserModelEmpty.password = userData.password;
+                }
+
+                user.EditUser(userModel.UserModelEmpty);
+
+
+                UserModelAndEmptyUserModel userModelAndEmptyUserModel = new UserModelAndEmptyUserModel();
+                userModelAndEmptyUserModel.UserModelFull = userData;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
            
-            
-
-
-            user.EditUser(userModel.UserModelEmpty);
-
-            
-
-            UserModelAndEmptyUserModel userModelAndEmptyUserModel = new UserModelAndEmptyUserModel();
-            userModelAndEmptyUserModel.UserModelFull = userData;
 
 
             return Redirect("AccountDetails");

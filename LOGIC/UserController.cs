@@ -24,9 +24,22 @@ namespace LOGIC
         //    return (userModel);
         //}
 
-        public void AddUser(UserModel user)
+        public bool AddUser(UserModel user)
         {
-            userdal.AddUser(user);
+            if (user.username == null)
+            {
+                return false;
+            }
+            else if (user.username == null)
+            {
+                return false;
+            }
+            else
+            {
+                userdal.AddUser(user);
+                return true;
+            }
+            
         }
 
     }

@@ -25,18 +25,18 @@ namespace LOGIC.Tests
         }
 
 
-       
-        //[TestMethod]
-        //public void Create_WhenExecuted_ReturnsCreateView()
-        //{
-        //    _driver.Navigate()
-        //        .GoToUrl("https://localhost:44332/Login/Inloggen");
-
-        //    Assert.AreEqual("Login Page - Reserverings App", _driver.Title);
-        //}
 
         [TestMethod]
-        public void Create_WhenSuccessfullyExecuted_ReturnsIndexViewWithNewEmployee()
+        public void Create_WhenExecuted_ReturnsCreateView()
+        {
+            _driver.Navigate()
+                .GoToUrl("https://localhost:44332/Login/Inloggen");
+
+            Assert.AreEqual("Login Page - Reserverings App", _driver.Title);
+        }
+
+        [TestMethod]
+        public void RegisterPageTestSucces()
         {
             _driver.Navigate()
                 .GoToUrl("https://localhost:44332/Register/Registreren");
@@ -48,16 +48,77 @@ namespace LOGIC.Tests
                 .SendKeys("068973245");
 
             _driver.FindElement(By.Id("username"))
+                .SendKeys("a");
+
+            _driver.FindElement(By.Id("password"))
+                .SendKeys("b");
+
+            _driver.FindElement(By.Id("submit"))
+                .Click();
+
+            Assert.AreEqual("Registreren - Reserverings App", _driver.Title);
+            StringAssert.Contains(_driver.PageSource, "Register Succesfull");
+        }
+
+        [TestMethod]
+        public void RegisterPageTestFail()
+        {
+            _driver.Navigate()
+                .GoToUrl("https://localhost:44332/Register/Registreren");
+
+            _driver.FindElement(By.Id("name"))
+                .SendKeys("Jan");
+
+            _driver.FindElement(By.Id("telNr"))
+                .SendKeys("068973245");
+
+            _driver.FindElement(By.Id("submit"))
+                .Click();
+
+            Assert.AreEqual("Registreren - Reserverings App", _driver.Title);
+            StringAssert.Contains(_driver.PageSource, "Register Failed");
+        }
+
+        
+
+        [TestMethod]
+        public void LoginPageTestSucces()
+        {
+            _driver.Navigate()
+                .GoToUrl("https://localhost:44332/Login/Inloggen");
+
+
+            _driver.FindElement(By.Id("username"))
                 .SendKeys("Jan1");
 
             _driver.FindElement(By.Id("password"))
                 .SendKeys("Jan2");
 
-            
+            _driver.FindElement(By.Id("submit"))
+                .Click();
 
-            Assert.AreEqual("Registreren - Reserverings App", _driver.Title);
-            StringAssert.Contains("Jan ", _driver.PageSource);
+            Assert.AreEqual("Login Page - Reserverings App", _driver.Title);
+            StringAssert.Contains(_driver.PageSource, "Login Succesfull");
+        }
 
+        [TestMethod]
+        public void LoginPageTestFail()
+        {
+            _driver.Navigate()
+                .GoToUrl("https://localhost:44332/Login/Inloggen");
+
+
+            _driver.FindElement(By.Id("username"))
+                .SendKeys("c");
+
+            _driver.FindElement(By.Id("password"))
+                .SendKeys("d");
+
+            _driver.FindElement(By.Id("submit"))
+                .Click();
+
+            Assert.AreEqual("Login Page - Reserverings App", _driver.Title);
+            StringAssert.Contains(_driver.PageSource, "Login Unsuccesfull");
         }
 
 

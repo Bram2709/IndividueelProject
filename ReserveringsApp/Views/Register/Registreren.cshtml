@@ -14,7 +14,7 @@
                         Naam:
                     </div>
                     <div class="col-sm-4">
-                        <input asp-for="name" placeholder="Your name goes here" id="name"/>
+                        <input asp-for="name" placeholder="Your name goes here" id="name" />
                     </div>
                 </div>
                 <div class="row  formInput">
@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="col-sm-4">
-                        <input asp-for="telNr" placeholder="Your name goes here" id="telNr"/>
+                        <input asp-for="telNr" placeholder="Your name goes here" id="telNr" />
                     </div>
                 </div>
 
@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="col-sm-4">
-                        <input asp-for="username" placeholder="Your name goes here" id="username"/>
+                        <input asp-for="username" placeholder="Your name goes here" id="username" />
                     </div>
                 </div>
 
@@ -57,6 +57,13 @@
 
                 </div>
 
+                <div class="row formInput">
+                    <div class="col-lg-4">
+                        @ViewBag.RegisterData
+                    </div>
+
+                </div>
+                
 
             </form>
         </div>
