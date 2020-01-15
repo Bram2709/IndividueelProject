@@ -53,10 +53,9 @@ namespace LOGIC.Tests
             _driver.FindElement(By.Id("password"))
                 .SendKeys("Jan2");
 
-            _driver.FindElement(By.Id("submit"))
-                .Click();
+            
 
-            Assert.AreEqual("Login Page - Reserverings App", _driver.Title);
+            Assert.AreEqual("Registreren - Reserverings App", _driver.Title);
             StringAssert.Contains("Jan ", _driver.PageSource);
 
         }
