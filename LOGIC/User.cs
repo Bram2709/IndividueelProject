@@ -19,7 +19,7 @@ namespace LOGIC
         {
             UserModel thisUser = userDAL.GetUserByUserName(username);
 
-            if (thisUser.username == username && thisUser.password == password)
+            if (thisUser.username == username && thisUser.password == password && thisUser.username != null)
             {
                 //login is succesfull
                 return true;

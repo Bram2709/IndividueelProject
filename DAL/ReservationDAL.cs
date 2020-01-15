@@ -101,8 +101,11 @@ namespace DAL
             DbCon = new MySqlConnection(connString);
             DbCon.Open();
 
+            //SELECT `reservering`.`Naam`,`reservering`.`Datum`, `reservering`.`TelNr`, `reservering`.`AantalPersonen`, `reservering`.`Opmerkingen`,`restaurant`.`Name` FROM `reservering` INNER JOIN `table` ON `reservering`.`ReserveringID` = `table`.`ReservationID` INNER JOIN `restaurant` ON `restaurant`.`RestaurantID` = `table`.`RestaurantID`
+
             string query = "SELECT `reservering`.`Naam`,`reservering`.`Datum`, `reservering`.`TelNr`, `reservering`.`AantalPersonen`, `reservering`.`Opmerkingen`,`restaurant`.`Name` " +
-                "FROM `reservering` INNER JOIN `table`  " +
+                "FROM `reservering` " +
+                "INNER JOIN `table`  " +
                 "ON `reservering`.`ReserveringID` = `table`.`ReservationID` " +
                 "INNER JOIN `restaurant`  " +
                 "ON `restaurant`.`RestaurantID` = `table`.`RestaurantID`";

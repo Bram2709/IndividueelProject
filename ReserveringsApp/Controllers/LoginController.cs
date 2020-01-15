@@ -25,6 +25,8 @@ namespace ReserveringsApp.Controllers
         public IActionResult Inloggen(string username,string password)
         {
             
+         
+
             if(user.LoginCheck(username, password))
             {
                 UserModel user = userController.GetUserByName(username);
@@ -32,6 +34,12 @@ namespace ReserveringsApp.Controllers
                 HttpContext.Session.SetInt32("UserID", user.userID);
                 HttpContext.Session.SetString("Username", user.username.ToString());
                 HttpContext.Session.SetInt32("UserLvl", user.lvl);
+
+                ViewBag.loginData = "Login Succesfull";
+            }
+            else
+            {
+                ViewBag.loginData = "Login Unsuccesfull";
             }
             return View();
         }
