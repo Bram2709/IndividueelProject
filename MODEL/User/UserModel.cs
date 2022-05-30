@@ -13,6 +13,10 @@ namespace MODEL
         public string password { get; set; }
         public int lvl { get; set; }
 
+
+
+
+
         
 
 
