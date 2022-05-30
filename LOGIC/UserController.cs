@@ -26,11 +26,11 @@ namespace LOGIC
 
         public bool AddUser(UserModel user)
         {
-            if (user.username == null)
+            if (user.username == null || user.username == "")
             {
                 return false;
             }
-            else if (user.username == null)
+            else if (user.username == null || user.username == "") 
             {
                 return false;
             }

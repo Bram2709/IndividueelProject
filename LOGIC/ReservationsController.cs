@@ -35,9 +35,7 @@ namespace LOGIC
             else
             {
                 if (reservation.amountOfPeaple < restaurant.maxAmountOfPeaple - restaurant.CurrentAmountOfPeaple)
-                {
-                    
-
+                {               
                     //checks voor het minvullen van geldige gegevens
                     if (reservation.Name == "")
                     {
@@ -47,10 +45,6 @@ namespace LOGIC
                     {
                         return false;
                     }
-                    //else if (!Regex.Match(reservation.telNr, @"^(\+[0-9]{9})$").Success)
-                    //{
-                    //    return false;
-                    //}
                     else
                     {
                         AddReservation(reservation);
@@ -58,14 +52,12 @@ namespace LOGIC
                         tableDAL.AddReservationToTable(reservationModel);
                         return true;
                     }
-
                 }
                 else
                 {
                     return false;
                 }
             }
-            
         }
 
 

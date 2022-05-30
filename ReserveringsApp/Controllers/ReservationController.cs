@@ -42,7 +42,7 @@ namespace ReserveringsApp.Controllers
             
                 if (reservationController.TryToAddReservation(model.Reserveringen, restaurantController.GetRestaurantModelByName(model.Reserveringen.restaurant)))//max aantal mensen van het restaurant < current aantal mensen + reserveringen.AmountOfPeaple
                 {
-                    ViewBag.Result = "Toveogen van reservering is gelukt";
+                    ViewBag.Result = "Reserveren Succesfull";
 
                     if (true)
                     {
@@ -51,7 +51,7 @@ namespace ReserveringsApp.Controllers
                 }
                 else
                 {
-                    ViewBag.Result = "Toevoegen van de reservering is mislukt";
+                    ViewBag.Result = "Reserveren Failed";
                 }
 
                 var restaurant = restaurantController.GetAllRestaurantNames();
